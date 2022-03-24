@@ -1,0 +1,45 @@
+{
+  "mode": "All",
+      "parameters": {
+      "environment": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Allowed Environments",
+          "description": "The list of allowed environments for resources"
+        },
+        "allowedValues": [
+          "prd",
+          "dev",
+          "qat",
+          "uat"
+        ],
+        "defaultValue": [
+          "prd"
+        ]
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+        {
+        "field": "type",
+        "equals": "Microsoft.Network/virtualNetworks"
+        },
+        {
+            "count": {
+            "value": "[parameters('environment')]",
+            "name": "env",
+            "where": {
+              "field": "name",
+              "MatchInsensitively": "[concat('vnet', '-??????', current('env'), '-###')]"
+              }
+            },
+            "equals": 0
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
