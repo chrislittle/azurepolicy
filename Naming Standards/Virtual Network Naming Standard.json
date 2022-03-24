@@ -5,7 +5,7 @@
         "allOf": [
             {
             "field": "name",
-            "notMatchInsensitively": "[concat('vnet', '-??????-', parameters('environment'), '-', parameters('region'), '-###')]"
+            "notMatchInsensitively": "[concat('vnet', '-??????', '-??????', '-###')]"
             },
            {
             "field": "type",
@@ -16,34 +16,5 @@
       "then": {
         "effect": "deny"
       }
-    },
-    "parameters": {
-      "environment": {
-        "type": "String",
-        "defaultValue": "prod",
-        "metadata": {
-          "displayName": "Allowed Environments",
-          "description": "The list of allowed environments for resources"
-        },
-        "allowedValues": [
-          "prod",
-          "dev",
-          "qa"
-        ]
-      },
-      "region": {
-        "type": "String",
-        "defaultValue": "eastus",
-        "metadata": {
-          "displayName": "region",
-          "description": "The list of allowed regions for resource."
-        },
-        "allowedValues": [
-          "eastus",
-          "eastus2",
-          "westus2",
-          "westus"
-        ]
-      }
     }
-  }
+}
