@@ -5,11 +5,11 @@
         "allOf": [
             {
             "field": "name",
-            "notMatchInsensitively": "[concat('sql', '-????????', '-???')]"
+            "notMatchInsensitively": "[concat('st', '????????', '###')]"
             },
            {
             "field": "type",
-            "equals": "Microsoft.Sql/servers"
+            "equals": "Microsoft.Storage/storageAccounts"
           }
         ]
       },
