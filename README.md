@@ -1,2 +1,2 @@
-# azurepolicy
-Azure Policy Samples
+# Azure Sample Policies
+
