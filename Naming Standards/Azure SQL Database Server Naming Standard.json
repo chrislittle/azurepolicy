@@ -1,0 +1,20 @@
+{
+    "mode": "Indexed",
+    "policyRule": {
+      "if": {
+        "allOf": [
+            {
+            "field": "name",
+            "notMatchInsensitively": "[concat('sql', '-????????', '-???')]"
+            },
+           {
+            "field": "type",
+            "equals": "Microsoft.Sql/servers"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
