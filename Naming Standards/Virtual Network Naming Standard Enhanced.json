@@ -31,7 +31,7 @@
             "name": "env",
             "where": {
               "field": "name",
-              "MatchInsensitively": "[concat('vnet', '-??????', current('env'), '-###')]"
+              "MatchInsensitively": "[concat('vnet', '-??????-', current('env'), '-###')]"
               }
             },
             "equals": 0
