@@ -4,4 +4,4 @@ This policy requires that only approved image galleries are used in your environ
 an array of approved galleries.
 
 ## Try with Azure portal
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https://github.com/chrislittle/azurepolicy/blob/main/Image%20Standards/Restrict%20Images%20From%20Shared%20Image%20Galleries/azurepolicy.json)
+[![Deploy to Azure](http://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fchrislittle%2Fazurepolicy%2Fmain%2FImage%2520Standards%2FRestrict%2520Images%2520From%2520Shared%2520Image%2520Galleries%2Fazurepolicy.json)
