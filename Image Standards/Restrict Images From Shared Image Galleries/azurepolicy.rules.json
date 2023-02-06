@@ -1,0 +1,22 @@
+{
+"if": {
+    "allOf": [
+       {
+          "field": "type",
+          "in": [
+             "Microsoft.Compute/virtualMachines",
+             "Microsoft.Compute/VirtualMachineScaleSets"
+          ]
+       },
+       {
+          "not": {
+             "field": "Microsoft.Compute/imageId",
+             "contains": "[concat('resourceGroups/', parameters('ApprovedStorageImageLocation'))]"
+          }
+       }
+    ]
+ },
+ "then": {
+    "effect": "deny"
+ }
+}

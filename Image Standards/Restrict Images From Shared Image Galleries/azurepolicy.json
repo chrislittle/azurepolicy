@@ -1,0 +1,39 @@
+{
+   "type": "Microsoft.Authorization/policyDefinitions",
+   "name": "allowed-image-galleries", 
+   "properties": {
+       "displayName": "Approved Image Galleries",
+       "description": "This policy governs the approved image galleries",
+       "parameters": {
+           "imageIds": {
+               "type": "array",
+               "metadata": {
+                   "description": "The list of approved image galleries",
+                   "displayName": "Approved Image Galleries"
+               }
+           }
+       },
+       "policyRule": {
+           "if": {
+               "allOf": [
+                   {
+                       "field": "type",
+                       "in": [
+                        "Microsoft.Compute/virtualMachines",
+                        "Microsoft.Compute/VirtualMachineScaleSets"
+                     ]
+                   },
+                   {
+                       "not": {
+                           "field": "Microsoft.Compute/imageId",
+                           "contains": "[concat('resourceGroups/', parameters('ApprovedStorageImageLocation'))]"
+                       }
+                   }
+               ]
+           },
+           "then": {
+               "effect": "deny"
+           }
+       }
+   }   
+}

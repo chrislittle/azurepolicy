@@ -1,0 +1,9 @@
+{
+	"imageIds": {
+		"type": "array",
+		"metadata": {
+			"description": "The list of approved image galleries",
+			"displayName": "Approved Image Galleries"
+		}
+	}
+}
