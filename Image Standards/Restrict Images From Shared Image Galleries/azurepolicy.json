@@ -5,7 +5,7 @@
        "displayName": "Approved Image Galleries",
        "description": "This policy governs the approved image galleries",
        "parameters": {
-           "imageIds": {
+           "ApprovedStorageImageLocation": {
                "type": "array",
                "metadata": {
                    "description": "The list of approved image galleries",
