@@ -3,7 +3,7 @@
     "allOf": [
        {
           "field": "type",
-          "in": [
+          "equals": [
              "Microsoft.Compute/virtualMachines",
              "Microsoft.Compute/VirtualMachineScaleSets"
           ]
@@ -11,7 +11,7 @@
        {
           "not": {
              "field": "Microsoft.Compute/imageId",
-             "contains": "[parameters('ApprovedStorageImageLocation')]"
+             "in": "[parameters('ApprovedStorageImageLocation')]"
           }
        }
     ]
