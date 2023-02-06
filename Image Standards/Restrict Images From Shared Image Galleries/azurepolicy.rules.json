@@ -3,7 +3,7 @@
     "allOf": [
        {
           "field": "type",
-          "equals": [
+          "in": [
              "Microsoft.Compute/virtualMachines",
              "Microsoft.Compute/VirtualMachineScaleSets"
           ]

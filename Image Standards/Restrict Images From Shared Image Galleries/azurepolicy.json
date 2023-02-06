@@ -3,6 +3,7 @@
    "name": "allowed-image-galleries", 
    "properties": {
        "displayName": "Approved Image Galleries",
+       "mode": "Indexed",
        "description": "This policy governs the approved image galleries",
        "parameters": {
            "ApprovedStorageImageLocation": {
@@ -18,7 +19,7 @@
                "allOf": [
                    {
                        "field": "type",
-                       "equals": [
+                       "in": [
                         "Microsoft.Compute/virtualMachines",
                         "Microsoft.Compute/VirtualMachineScaleSets"
                      ]
