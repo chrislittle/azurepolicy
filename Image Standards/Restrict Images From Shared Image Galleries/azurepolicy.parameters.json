@@ -1,5 +1,5 @@
 {
-	"imageIds": {
+	"ApprovedStorageImageLocation": {
 		"type": "array",
 		"metadata": {
 			"description": "The list of approved image galleries",
