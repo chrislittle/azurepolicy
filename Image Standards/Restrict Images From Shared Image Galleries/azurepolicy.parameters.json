@@ -1,9 +1,10 @@
 {
-	"ApprovedStorageImageLocation": {
-		"type": "array",
+	"SharedGallery": {
+		"type": "string",
 		"metadata": {
 			"description": "The list of approved image galleries",
-			"displayName": "Approved Image Galleries"
+			"displayName": "Approved Image Galleries",
+			"strongType": "galleries"
 		}
 	}
 }

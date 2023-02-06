@@ -10,8 +10,8 @@
        },
        {
           "not": {
-             "field": "Microsoft.Compute/imageId",
-             "in": "[parameters('ApprovedStorageImageLocation')]"
+             "field": "Microsoft.Compute/galleries",
+             "in": "[parameters('SharedGallery')]"
           }
        }
     ]

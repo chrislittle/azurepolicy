@@ -6,11 +6,12 @@
        "mode": "Indexed",
        "description": "This policy governs the approved image galleries",
        "parameters": {
-           "ApprovedStorageImageLocation": {
-               "type": "array",
+           "SharedGallery": {
+               "type": "string",
                "metadata": {
                    "description": "The list of approved image galleries",
-                   "displayName": "Approved Image Galleries"
+                   "displayName": "Approved Image Galleries",
+                   "strongType": "galleries"
                }
            }
        },
@@ -26,8 +27,8 @@
                    },
                    {
                        "not": {
-                           "field": "Microsoft.Compute/imageId",
-                           "in": "[parameters('ApprovedStorageImageLocation')]"
+                           "field": "Microsoft.Compute/galleries",
+                           "in": "[parameters('SharedGallery')]"
                        }
                    }
                ]
