@@ -5,13 +5,14 @@
        "displayName": "Approved Image Galleries",
        "mode": "Indexed",
        "description": "This policy governs the approved image galleries",
+       "category": "Compute",
        "parameters": {
            "SharedGallery": {
                "type": "string",
                "metadata": {
                    "description": "The list of approved image galleries",
                    "displayName": "Approved Image Galleries",
-                   "strongType": "galleries"
+                   "strongType": "Microsoft.Compute/galleries"
                }
            }
        },
@@ -20,10 +21,7 @@
                "allOf": [
                    {
                        "field": "type",
-                       "in": [
-                        "Microsoft.Compute/virtualMachines",
-                        "Microsoft.Compute/VirtualMachineScaleSets"
-                     ]
+                       "equals": "Microsoft.Compute/virtualMachines"
                    },
                    {
                        "not": {
