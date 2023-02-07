@@ -1,22 +1,17 @@
 {
-"if": {
-    "allOf": [
-       {
-          "field": "type",
-          "in": [
-             "Microsoft.Compute/virtualMachines",
-             "Microsoft.Compute/VirtualMachineScaleSets"
-          ]
-       },
-       {
-          "not": {
-             "field": "Microsoft.Compute/galleries",
-             "in": "[parameters('SharedGallery')]"
-          }
-       }
-    ]
- },
- "then": {
-    "effect": "deny"
- }
-}
+   "if": {
+       "allOf": [
+           {
+               "field": "type",
+               "equals": "Microsoft.Compute/virtualMachines"
+           },
+           {
+               "field": "Microsoft.Compute/imageReference.gallery",
+               "notIn": "[parameters('listOfSharedImageGalleries')]"
+           }
+       ]
+   },
+   "then": {
+       "effect": "deny"
+   }
+  }

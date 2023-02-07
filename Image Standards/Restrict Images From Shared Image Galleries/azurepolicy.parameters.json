@@ -1,10 +1,10 @@
 {
-	"SharedGallery": {
+	"listOfSharedImageGalleries": {
 		"type": "string",
 		"metadata": {
-			"description": "The list of approved image galleries",
-			"displayName": "Approved Image Galleries",
-			"strongType": "Microsoft.Compute/galleries"
+			"description": "Specify the list of shared image galleries to allow",
+			"displayName": "List of Shared Image Galleries",
+			"strongType": "gallery"
 		}
 	}
 }

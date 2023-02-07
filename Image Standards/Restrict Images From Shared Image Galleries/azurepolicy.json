@@ -1,39 +1,36 @@
 {
    "type": "Microsoft.Authorization/policyDefinitions",
-   "name": "allowed-image-galleries", 
+   "name": "Restrict-Images-Galleries", 
    "properties": {
-       "displayName": "Approved Image Galleries",
-       "mode": "Indexed",
-       "description": "This policy governs the approved image galleries",
-       "category": "Compute",
+       "displayName": "Restrict virtual machine images to a defined list of shared image galleries",
+       "mode": "All",
+       "description": "This policy restricts virtual machine images to a defined list of shared image galleries",
        "parameters": {
-           "SharedGallery": {
-               "type": "string",
+           "listOfSharedImageGalleries": {
+               "type": "Array",
                "metadata": {
-                   "description": "The list of approved image galleries",
-                   "displayName": "Approved Image Galleries",
-                   "strongType": "Microsoft.Compute/galleries"
+                   "description": "Specify the list of shared image galleries to allow.",
+                   "displayName": "List of Shared Image Galleries",
+                   "strongType": "gallery"
                }
            }
        },
        "policyRule": {
-           "if": {
-               "allOf": [
-                   {
-                       "field": "type",
-                       "equals": "Microsoft.Compute/virtualMachines"
-                   },
-                   {
-                       "not": {
-                           "field": "Microsoft.Compute/galleries",
-                           "in": "[parameters('SharedGallery')]"
-                       }
-                   }
-               ]
-           },
-           "then": {
-               "effect": "deny"
-           }
+        "if": {
+            "allOf": [
+                {
+                    "field": "type",
+                    "equals": "Microsoft.Compute/virtualMachines"
+                },
+                {
+                    "field": "Microsoft.Compute/imageReference.gallery",
+                    "notIn": "[parameters('listOfSharedImageGalleries')]"
+                }
+            ]
+        },
+        "then": {
+            "effect": "deny"
+        }
        }
    }   
 }
