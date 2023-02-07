@@ -11,7 +11,7 @@
                "metadata": {
                    "description": "Specify the list of shared image galleries to allow.",
                    "displayName": "List of Shared Image Galleries",
-                   "strongType": "gallery"
+                   "strongType": "Galleries"
                }
            }
        },
