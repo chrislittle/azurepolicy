@@ -6,7 +6,7 @@
                "equals": "Microsoft.Compute/virtualMachines"
            },
            {
-               "field": "Microsoft.Compute/imageReference.gallery",
+               "field": "Microsoft.Compute/galleries/identifier.uniqueName",
                "notIn": "[parameters('listOfSharedImageGalleries')]"
            }
        ]
