@@ -11,7 +11,7 @@
        },
        "parameters": {
            "listOfComputeGalleries": {
-               "type": "String",
+               "type": "Array",
                "metadata": {
                    "description": "Specify the list of compute galleries to allow.",
                    "displayName": "List of Compute Galleries",
