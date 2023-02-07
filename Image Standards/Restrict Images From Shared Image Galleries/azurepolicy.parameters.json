@@ -1,10 +1,10 @@
 {
-	"listOfSharedImageGalleries": {
+	"listOfComputeGalleries": {
 		"type": "string",
 		"metadata": {
-			"description": "Specify the list of shared image galleries to allow",
-			"displayName": "List of Shared Image Galleries",
-			"strongType": "gallery"
+			"description": "Specify the list of compute galleries to allow",
+			"displayName": "List of Compute Galleries",
+			"strongType": "Microsoft.Compute/galleries"
 		}
 	}
 }

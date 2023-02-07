@@ -1,17 +1,21 @@
 {
-   "type": "Microsoft.Authorization/policyDefinitions",
-   "name": "Restrict-Images-Galleries", 
    "properties": {
-       "displayName": "Restrict virtual machine images to a defined list of shared image galleries",
-       "mode": "All",
-       "description": "This policy restricts virtual machine images to a defined list of shared image galleries",
+       "name": "RestrictVMImagesGallery",
+       "displayName": "Restrict virtual machine images to a defined list of compute galleries",
+       "policyType": "Custom",
+       "mode": "Indexed",
+       "description": "This policy restricts virtual machine images to a defined list of compute galleries",
+       "metadata": {
+            "version": "1.0",
+            "category": "Compute"
+       },
        "parameters": {
-           "listOfSharedImageGalleries": {
-               "type": "Array",
+           "listOfComputeGalleries": {
+               "type": "String",
                "metadata": {
-                   "description": "Specify the list of shared image galleries to allow.",
-                   "displayName": "List of Shared Image Galleries",
-                   "strongType": "Galleries"
+                   "description": "Specify the list of compute galleries to allow.",
+                   "displayName": "List of Compute Galleries",
+                   "strongType": "Microsoft.Compute/galleries"
                }
            }
        },
@@ -24,7 +28,7 @@
                 },
                 {
                     "field": "Microsoft.Compute/galleries/identifier.uniqueName",
-                    "notIn": "[parameters('listOfSharedImageGalleries')]"
+                    "notIn": "[parameters('listOfComputeGalleries')]"
                 }
             ]
         },
