@@ -7,7 +7,7 @@
           },
           {
             "field": "Microsoft.Resources/subscriptions/tagnames",
-            "exists": "false"
+            "notIn": "[parameters('definedTags')]"
           }
         ]
       },
