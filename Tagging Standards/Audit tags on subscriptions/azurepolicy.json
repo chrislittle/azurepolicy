@@ -1,5 +1,6 @@
 {
    "properties": {
+       "Name": "audit-tags-on-subscriptions",
        "displayName": "Audit tags on subscriptions",
        "policyType": "Custom",
        "mode": "Indexed",
