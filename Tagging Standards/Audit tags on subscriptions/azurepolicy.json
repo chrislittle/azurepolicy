@@ -1,94 +1,34 @@
 {
     "properties": {
-        "displayName": "Audit tags on subscriptions",
-        "policyType": "Custom",
-        "mode": "Indexed",
-        "description": "Audit the tags on subscriptions.",
-        "metadata": {
-            "category": "Tags"
-       },
-       "parameters":{},
+        "displayName": "Audit Subscriptions with Defined Tags",
+        "description": "Audit Subscriptions for the presence of defined tags.",
+        "mode": "All",
+        "parameters": {
+          "definedTags": {
+            "type": "array",
+            "metadata": {
+              "description": "Define the tags that should be present on all subscriptions.",
+              "displayName": "Defined Tags",
+              "strongType": "tag"
+            }
+          }
+        },
        "policyRule": {
         "if": {
-                "allof": [
-                    {
-                        "field": "type",
-                        "equals": "Microsoft.Resources/subscriptions"
-    
-                    },
-                    {
-                        "field": "tags['Workload Owner']",
-                        "exits": "false"
-                    },
-                    {
-                        "field": "tags['Workload Owner']",
-                        "like": "*@xylem.com"
-                    },
-                    {
-                        "field": "tags['Workload Name']",
-                        "exits": "false"
-                    },
-                    {
-                        "field": "tags['Application Name']",
-                        "exits": "false"
-                    },
-                    {
-                        "field": "tags['Application Owner']",
-                        "exits": "false"
-                    },
-                    {
-                        "field": "tags['Application Owner']",
-                        "like": "*@xylem.com"
-                    },
-                    {
-                        "field": "tags['Project Manager']",
-                        "exits": "false"
-                    },
-                    {
-                        "field": "tags['Project Manager']",
-                        "like": "*@xylem.com"
-                    },
-                    {
-                        "field": "tags['Environment']",
-                        "exits": "false"
-                    },
-                    {
-                        "field": "tags['Business Unit']",
-                        "exits": "false"
-                    },
-                    {
-                        "field": "tags['Cost Center']",
-                        "exits": "false"
-                    },
-                    {
-                        "field": "tags['Billing Approver Contact']",
-                        "exits": "false"
-                    },
-                    {
-                        "field": "tags['Billing Approver Contact']",
-                        "like": "*@xylem.com"
-                    },
-                    {
-                        "field": "tags['Ops/Support Team']",
-                        "exits": "false"
-                    },
-                    {
-                        "field": "tags['Technical Contact']",
-                        "exits": "false"
-                    },
-                    {
-                        "field": "tags['Technical Contact']",
-                        "like": "*@xylem.com"
-                    },
-                    {
-                        "field": "tags['Last Release or Modified Date']",
-                        "exits": "false"
-                    }
-                ]
+          "allOf": [
+            {
+              "field": "type",
+              "equals": "Microsoft.Resources/subscriptions"
+            },
+            {
+              "field": "Microsoft.Resources/subscriptions/tags",
+              "exists": "false"
             }
+          ]
         },
         "then": {
-            "effect": "audit"
+          "effect": "audit"
         }
-       }
-   }   
+      }
+    }
+}   
