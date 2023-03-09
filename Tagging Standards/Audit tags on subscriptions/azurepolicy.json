@@ -1,15 +1,13 @@
 {
-   "properties": {
-       "Name": "audit-tags-on-subscriptions",
-       "displayName": "Audit tags on subscriptions",
-       "policyType": "Custom",
-       "mode": "Indexed",
-       "description": "Audit the tags on subscriptions.",
-       "metadata": {
+    "properties": {
+        "displayName": "Audit tags on subscriptions",
+        "policyType": "Custom",
+        "mode": "Indexed",
+        "description": "Audit the tags on subscriptions.",
+        "metadata": {
             "version": "1.0",
             "category": "Tags"
        },
-       "parameters": {},
        "policyRule": {
         "if": {
                 "allof": [
