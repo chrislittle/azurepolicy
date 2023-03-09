@@ -6,7 +6,7 @@
             "equals": "Microsoft.Resources/subscriptions"
           },
           {
-            "field": "Microsoft.Resources/subscriptions/tags",
+            "field": "Microsoft.Resources/subscriptions/tagnames",
             "exists": "false"
           }
         ]

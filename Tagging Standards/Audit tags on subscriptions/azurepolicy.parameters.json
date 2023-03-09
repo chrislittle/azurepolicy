@@ -1,0 +1,10 @@
+{
+	"definedTags": {
+		"type": "array",
+		"metadata": {
+	  		"description": "Define the tags that should be present on all subscriptions.",
+	  		"displayName": "Defined Tags",
+	  		"strongType": "Microsoft.Resources/subscriptions/tagnames"
+		}
+	}
+}
