@@ -1,0 +1,25 @@
+{
+      "if": {
+        "allOf": [
+          {
+            "field": "[concat('tags[', parameters('tagName1'), ']')]",
+            "exists": "false"
+          },
+          {
+            "value": "[subscription().tags[parameters('tagName1')]]",
+            "notEquals": ""
+          },
+          {
+            "field": "[concat('tags[', parameters('tagName2'), ']')]",
+            "exists": "false"
+          },
+          {
+            "value": "[subscription().tags[parameters('tagName2')]]",
+            "notEquals": ""
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    }

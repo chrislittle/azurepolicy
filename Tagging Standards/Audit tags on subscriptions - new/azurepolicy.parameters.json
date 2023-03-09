@@ -1,0 +1,16 @@
+{
+	"tagName1": {
+	  "type": "String",
+	  "metadata": {
+		"description": "Tag Name 1",
+		"displayName": "Name of the tag"
+	  }
+	},
+	"tagName2": {
+	  "type": "String",
+	  "metadata": {
+		"description": "Tag Name 2",
+		"displayName": "Name of the tag"
+	  }
+	}
+}
