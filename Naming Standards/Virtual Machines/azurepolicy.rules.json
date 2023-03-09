@@ -1,20 +1,100 @@
 {
-    "mode": "All",
-    "policyRule": {
-      "if": {
-        "allOf": [
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.Compute/virtualMachines"
+        },
+        {
+          "anyOf": [
             {
-            "field": "name",
-            "notMatchInsensitively": "[concat('vm', '-????????', '###')]"
+              "value": "[equals(toLower(substring(field('name'), 0, 2)), parameters('name'))]",
+              "equals": false
             },
-           {
-            "field": "type",
-            "equals": "Microsoft.Compute/virtualMachines"
-          }
-        ]
+            {
+              "value": "[or(equals(toLower(substring(field('name'), 2, 1)), 'w'), equals(toLower(substring(field('name'), 2, 1)), 'l'))]",
+              "equals": false
+            },
+            {
+              "value": "[or(empty(toLower(substring(field('name'), 3, sub(length(field('name')), 7)))), greater(length(toLower(substring(field('name'), 3, sub(length(field('name')), 7)))), parameters('appIDLength')))]",
+              "equals": true
+            },
+            {
+              "count": {
+                "value": "[parameters('environment')]",
+                "name": "environment",
+                "where": {
+                  "value": "[equals(toLower(substring(field('name'), sub(length(field('name')), 4) , 1)), current('environment'))]",
+                  "equals": true
+                }
+              },
+              "less": 1
+            },
+            {
+              "count": {
+                "value": "[parameters('region')]",
+                "name": "region",
+                "where": {
+                  "value": "[equals(toLower(substring(field('name'), sub(length(field('name')), 3) , 1)), current('region'))]",
+                  "equals": true
+                }
+              },
+              "less": 1
+            },
+            {
+              "value": "[lessOrEquals(substring(field('name'), sub(length(field('name')), 2) , 2), 'a')]",
+              "equals": false
+            }
+          ]
+        }
+      ]
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "String",
+      "metadata": {
+        "displayName": "name",
+        "description": null
       },
-      "then": {
-        "effect": "deny"
-      }
+      "defaultValue": "vm"
+    },
+    "appIDLength": {
+      "type": "Integer",
+      "metadata": {
+        "displayName": "Application ID allowable length",
+        "description": "If APP ID is longer than this value the name will not be allowed"
+      },
+      "defaultValue": 8
+    },
+    "environment": {
+      "type": "Array",
+      "metadata": {
+        "displayName": "Environment Abbreviation",
+        "description": "Use 1 character for the environment abbreviation: 'h' = hub, 'p' = Prod, 'd' = dev, & 't' = testqa "
+      },
+      "defaultValue": [
+        "h",
+        "p",
+        "t",
+        "d"
+      ]
+    },
+    "region": {
+      "type": "Array",
+      "metadata": {
+        "displayName": "Region Abbreviation",
+        "description": "Use 1 character to abbreviate the region (e.g., 'p' for w2us or 's' for wcus)."
+      },
+      "defaultValue": [
+        "p",
+        "s"
+      ]
     }
   }
+}

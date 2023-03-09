@@ -1,0 +1,84 @@
+{
+    "if": {
+        "not": {
+            "allof": [
+                {
+                    "field": "type",
+                    "equals": "Microsoft.Resources/subscriptions"
+
+                },
+                {
+                    "field": "tags['Workload Owner']",
+                    "exits": "true"
+                },
+                {
+                    "field": "tags['Workload Owner']",
+                    "like": "*@xylem.com"
+                },
+                {
+                    "field": "tags['Workload Name']",
+                    "exits": "true"
+                },
+                {
+                    "field": "tags['Application Name']",
+                    "exits": "true"
+                },
+                {
+                    "field": "tags['Application Owner']",
+                    "exits": "true"
+                },
+                {
+                    "field": "tags['Application Owner']",
+                    "like": "*@xylem.com"
+                },
+                {
+                    "field": "tags['Project Manager']",
+                    "exits": "true"
+                },
+                {
+                    "field": "tags['Project Manager']",
+                    "like": "*@xylem.com"
+                },
+                {
+                    "field": "tags['Environment']",
+                    "exits": "true"
+                },
+                {
+                    "field": "tags['Business Unit']",
+                    "exits": "true"
+                },
+                {
+                    "field": "tags['Cost Center']",
+                    "exits": "true"
+                },
+                {
+                    "field": "tags['Billing Approver Contact']",
+                    "exits": "true"
+                },
+                {
+                    "field": "tags['Billing Approver Contact']",
+                    "like": "*@xylem.com"
+                },
+                {
+                    "field": "tags['Ops/Support Team']",
+                    "exits": "true"
+                },
+                {
+                    "field": "tags['Technical Contactt']",
+                    "exits": "true"
+                },
+                {
+                    "field": "tags['Technical Contact']",
+                    "like": "*@xylem.com"
+                },
+                {
+                    "field": "tags['Last Release or Modified Date']",
+                    "exits": "true"
+                }
+            ]
+        }
+    },
+    "then": {
+        "effect": "audit"
+    }
+  }

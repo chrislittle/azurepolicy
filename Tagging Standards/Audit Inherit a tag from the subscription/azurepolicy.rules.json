@@ -1,0 +1,19 @@
+{
+    "if": {
+        "not": {
+            "allof": [
+                {
+                    "field": "tags['Workload Owner']",
+                    "exits": "true"
+                },
+                {
+                    "field": "tags['Workload Owner']",
+                    "like": "*@xylem.com"
+                }
+            ]
+        }
+    },
+    "then": {
+        "effect": "deny"
+    }
+  }
