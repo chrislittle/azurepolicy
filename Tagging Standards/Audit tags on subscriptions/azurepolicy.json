@@ -9,7 +9,7 @@
             "metadata": {
               "description": "Define the tags that should be present on all subscriptions.",
               "displayName": "Defined Tags",
-              "strongType": "tag"
+              "strongType": "Microsoft.Resources/subscriptions/tagnames"
             }
           }
         },
@@ -21,7 +21,7 @@
               "equals": "Microsoft.Resources/subscriptions"
             },
             {
-              "field": "Microsoft.Resources/subscriptions/tags",
+              "field": "Microsoft.Resources/subscriptions/tagnames",
               "exists": "false"
             }
           ]
