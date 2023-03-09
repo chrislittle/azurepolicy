@@ -2,14 +2,20 @@
     "properties": {
         "displayName": "Audit Subscriptions with Defined Tags",
         "description": "Audit Subscriptions for the presence of defined tags.",
-        "mode": "All",
+        "mode": "Indexed",
         "parameters": {
-          "definedTags": {
-            "type": "array",
+          "tagName1": {
+            "type": "String",
             "metadata": {
-              "description": "Define the tags that should be present on all subscriptions.",
-              "displayName": "Defined Tags",
-              "strongType": "Microsoft.Resources/subscriptions/tagnames"
+              "description": "Tag Name 1",
+              "displayName": "Name of the tag"
+            }
+          },
+          "tagName2": {
+            "type": "String",
+            "metadata": {
+              "description": "Tag Name 2",
+              "displayName": "Name of the tag"
             }
           }
         },
@@ -17,12 +23,20 @@
         "if": {
           "allOf": [
             {
-              "field": "type",
-              "equals": "Microsoft.Resources/subscriptions/tagnames"
+              "field": "[concat('tags[', parameters('tagName1'), ']')]",
+              "exists": "false"
             },
             {
-              "field": "Microsoft.Resources/subscriptions/tagnames",
-              "notIn": "[parameters('definedTags')]"
+              "value": "[subscription().tags[parameters('tagName1')]]",
+              "notEquals": ""
+            },
+            {
+              "field": "[concat('tags[', parameters('tagName2'), ']')]",
+              "exists": "false"
+            },
+            {
+              "value": "[subscription().tags[parameters('tagName2')]]",
+              "notEquals": ""
             }
           ]
         },
