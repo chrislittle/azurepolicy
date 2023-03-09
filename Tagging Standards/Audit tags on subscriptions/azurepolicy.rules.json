@@ -1,6 +1,5 @@
 {
     "if": {
-        "not": {
             "allof": [
                 {
                     "field": "type",
@@ -9,7 +8,7 @@
                 },
                 {
                     "field": "tags['Workload Owner']",
-                    "exits": "true"
+                    "exits": "false"
                 },
                 {
                     "field": "tags['Workload Owner']",
@@ -17,15 +16,15 @@
                 },
                 {
                     "field": "tags['Workload Name']",
-                    "exits": "true"
+                    "exits": "false"
                 },
                 {
                     "field": "tags['Application Name']",
-                    "exits": "true"
+                    "exits": "false"
                 },
                 {
                     "field": "tags['Application Owner']",
-                    "exits": "true"
+                    "exits": "false"
                 },
                 {
                     "field": "tags['Application Owner']",
@@ -33,7 +32,7 @@
                 },
                 {
                     "field": "tags['Project Manager']",
-                    "exits": "true"
+                    "exits": "false"
                 },
                 {
                     "field": "tags['Project Manager']",
@@ -41,11 +40,11 @@
                 },
                 {
                     "field": "tags['Environment']",
-                    "exits": "true"
+                    "exits": "false"
                 },
                 {
                     "field": "tags['Business Unit']",
-                    "exits": "true"
+                    "exits": "false"
                 },
                 {
                     "field": "tags['Cost Center']",
@@ -53,7 +52,7 @@
                 },
                 {
                     "field": "tags['Billing Approver Contact']",
-                    "exits": "true"
+                    "exits": "false"
                 },
                 {
                     "field": "tags['Billing Approver Contact']",
@@ -61,11 +60,11 @@
                 },
                 {
                     "field": "tags['Ops/Support Team']",
-                    "exits": "true"
+                    "exits": "false"
                 },
                 {
                     "field": "tags['Technical Contactt']",
-                    "exits": "true"
+                    "exits": "false"
                 },
                 {
                     "field": "tags['Technical Contact']",
@@ -73,12 +72,11 @@
                 },
                 {
                     "field": "tags['Last Release or Modified Date']",
-                    "exits": "true"
+                    "exits": "false"
                 }
             ]
-        }
-    },
+        },
     "then": {
         "effect": "audit"
     }
-  }
+}
