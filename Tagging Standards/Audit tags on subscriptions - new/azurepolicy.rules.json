@@ -6,11 +6,11 @@
             "equals": "Microsoft.Resources/subscriptions"
           },
           {
-            "field": "[concat('tags[', parameters('tagName1'), ']')]",
+            "field": "[subscription().tags[parameters('tagName1')]]",
             "exists": "false"
           },
           {
-            "field": "[concat('tags[', parameters('tagName2'), ']')]",
+            "field": "[subscription().tags[parameters('tagName2')]]",
             "exists": "false"
           }
         ]
