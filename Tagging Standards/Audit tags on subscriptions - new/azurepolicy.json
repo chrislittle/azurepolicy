@@ -27,12 +27,20 @@
               "equals": "Microsoft.Resources/subscriptions"
             },
             {
-              "field": "[subscription().tags[parameters('tagName1')]]",
+              "field": "[concat('tags[', parameters('tagName1'), ']')]",
               "exists": "false"
             },
             {
-              "field": "[subscription().tags[parameters('tagName2')]]",
+              "field": "[concat('tags[', parameters('tagName2'), ']')]",
               "exists": "false"
+            },
+            {
+              "value": "[subscription().tags[parameters('tagName1')]]",
+              "notEquals": ""
+            },
+            {
+              "value": "[subscription().tags[parameters('tagName2')]]",
+              "notEquals": ""
             }
           ]
         },
