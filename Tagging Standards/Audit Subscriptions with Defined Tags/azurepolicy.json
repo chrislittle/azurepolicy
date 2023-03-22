@@ -2,7 +2,7 @@
     "properties": {
         "displayName": "Audit Subscriptions with Defined Tags",
         "description": "Audit Subscriptions for the presence of defined tags.",
-        "mode": "Indexed",
+        "mode": "All",
         "parameters": {
           "tagName1": {
             "type": "String",
