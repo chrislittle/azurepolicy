@@ -33,14 +33,6 @@
             {
               "field": "[concat('tags[', parameters('tagName2'), ']')]",
               "exists": "false"
-            },
-            {
-              "value": "[subscription().tags[parameters('tagName1')]]",
-              "notEquals": ""
-            },
-            {
-              "value": "[subscription().tags[parameters('tagName2')]]",
-              "notEquals": ""
             }
           ]
         },
