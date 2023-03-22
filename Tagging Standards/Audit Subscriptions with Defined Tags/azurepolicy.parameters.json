@@ -1,6 +1,7 @@
 {
 	"tagName1": {
 	  "type": "String",
+	  "defaultValue": "Workload Name",
 	  "metadata": {
 		"description": "Tag Name 1",
 		"displayName": "Name of the tag"
@@ -8,6 +9,7 @@
 	},
 	"tagName2": {
 	  "type": "String",
+	  "defaultValue": "Workload Owner",
 	  "metadata": {
 		"description": "Tag Name 2",
 		"displayName": "Name of the tag"
