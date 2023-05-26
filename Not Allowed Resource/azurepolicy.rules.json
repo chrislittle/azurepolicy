@@ -1,0 +1,17 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.CognitiveServices/accounts"
+      },
+      {
+        "field": "kind",
+        "equals": "OpenAI"
+      }
+    ]
+  },
+  "then": {
+    "effect": "Deny"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "properties": {
+    "displayName": "Deny the creation of OpenAI accounts",
+    "mode": "All",
+    "description": "This example policy enables you to deny OpenAI accounts.",
+    "parameters": {
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.CognitiveServices/accounts"
+          },
+          {
+            "field": "kind",
+            "equals": "OpenAI"
+          }
+        ]
+      },
+      "then": {
+        "effect": "Deny"
+      }
+    }
+  }
+}
