@@ -19,7 +19,7 @@
         ]
       },
       "then": {
-        "effect": "Deny"
+        "effect": "deny"
       }
     }
   }
