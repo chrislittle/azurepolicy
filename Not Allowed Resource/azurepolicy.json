@@ -2,7 +2,7 @@
   "properties": {
     "displayName": "Deny the creation of OpenAI accounts",
     "mode": "All",
-    "description": "This example policy enables you to deny OpenAI accounts.",
+    "description": "This example policy denies OpenAI accounts.",
     "parameters": {
     },
     "policyRule": {
