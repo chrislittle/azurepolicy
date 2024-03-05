@@ -3,7 +3,6 @@
   "displayName": "Configure Windows Arc-enabled machines to run Azure Monitor Agent in Network-Restricted Environments",
   "mode": "Indexed",
   "description": "Automate the deployment of Azure Monitor Agent extension on your Windows Arc-enabled machines in Network-Restricted environments for collecting telemetry data from the guest OS. This policy will install the extension if the OS and region are supported and system-assigned managed identity is enabled, and skip install otherwise.",
-  "parameters": {},
   "policyRule": {
     "if": {
       "allOf": [
