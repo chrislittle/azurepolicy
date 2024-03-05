@@ -137,13 +137,6 @@
     }
   },
   "parameters": {
-    "proxyurl": {
-      "type": "String",
-      "metadata": {
-        "displayName": "Proxy URL",
-        "description": "The URL of the proxy server to use for the extension."
-      }
-    },
     "effect": {
       "type": "String",
       "metadata": {
