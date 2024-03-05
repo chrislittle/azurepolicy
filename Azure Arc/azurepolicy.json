@@ -115,7 +115,7 @@
                       "proxy": {
                         "auth": "false",
                         "mode": "application",
-                        "address": "[parameters('proxyurl')]"
+                        "address": "http://xxx.xxx.xxx.xxx"
                       }
                     },
                     "protectedsetttings": {}
