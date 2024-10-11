@@ -17,10 +17,6 @@
             "equals": "MicrosoftWindowsServer"
           },
           {
-            "field": "Microsoft.Compute/imagePublisher",
-            "equals": "MicrosoftSQLServer"
-          },
-          {
             "field": "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration.patchSettings.patchMode",
             "equals": "AutomaticByPlatform"
           }
