@@ -12,9 +12,9 @@
           "listOfLocations": {
           "type": "Array",
           "metadata": {
-            "description": "list of locations that require custom dns server configuration.",
+            "description": "List of locations that require custom dns server configuration.",
             "strongType": "location",
-            "displayName": "list of locations that require custom dns server configuration"
+            "displayName": "List of locations that require custom dns server configuration"
         },
           "dnsServers": {
               "type": "Array",
