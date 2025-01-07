@@ -7,11 +7,11 @@
             },
             {
                 "field": "location",
-                "equals": "[parameters('listOfLocations')]"
+                "in": "[parameters('listOfLocations')]"
             },
             {
                 "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers",
-                "notEquals": "[parameters('dnsServers')]"
+                "notIn": "[parameters('dnsServers')]"
             }
         ]
         },
