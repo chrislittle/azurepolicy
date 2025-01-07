@@ -1,0 +1,75 @@
+{
+  "properties": {
+      "displayName": "Update VNET Custom DNS Servers Based on Location",
+      "policyType": "Custom",
+      "mode": "All",
+      "description": "Update virtual network custom DNS servers based on a defined list of locations",
+      "metadata": {
+          "category": "Network"
+      },
+      "version": "1.0.0",
+      "parameters": {
+          "listOfDNSProvidedLocations": {
+              "type": "Array",
+              "metadata": {
+                  "displayName": "List of Locations",
+                  "description": "Locations that should use the specified DNS servers"
+              },
+              "defaultValue": [
+                  "eastus",
+                  "eastus2",
+                  "centralindia",
+                  "southcentralus",
+                  "westus2"
+              ]
+          },
+          "dnsServers": {
+              "type": "Array",
+              "metadata": {
+                  "displayName": "DNS Servers",
+                  "description": "List of DNS servers to be applied"
+              },
+              "defaultValue": [
+                  "10.152.201.20"
+              ]
+          }
+      },
+      "policyRule": {
+          "if": {
+              "allOf": [
+                  {
+                      "field": "type",
+                      "equals": "Microsoft.Network/virtualNetworks"
+                  },
+                  {
+                      "field": "location",
+                      "notIn": "[parameters('listOfDNSProvidedLocations')]"
+                  },
+                  {
+                    "anyOf": [
+                      {
+                        "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers",
+                        "exists": false
+                      }
+                  ]
+              }
+          ]
+          },
+          "then": {
+              "effect": "modify",
+              "details": {
+                  "roleDefinitionIds": [
+                      "/providers/microsoft.authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7"
+                  ],
+                  "operations": [
+                      {
+                          "operation": "addOrReplace",
+                          "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers",
+                          "value": "[parameters('dnsServers')]"
+                      }
+                  ]
+              }
+          }
+      }
+  }
+}
