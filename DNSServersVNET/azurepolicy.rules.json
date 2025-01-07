@@ -9,18 +9,12 @@
                 "field": "location",
                 "in": "[parameters('listOfLocations')]"
             },
-            {
-              "anyOf": [
-                {
-                  "count": {
-                    "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]"
-                  },
-                  "notIn": "[parameters('dnsServers')]"
-                }    
+            {          
+                "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers",
+                "notIn": "[parameters('dnsServers')]"
+            }    
             ]
-        }
-      ]
-    },
+        },
     "then": {
         "effect": "modify",
         "details": {
