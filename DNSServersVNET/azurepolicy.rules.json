@@ -15,14 +15,14 @@
                   "count": {
                     "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]"
                   },
-                  "notIn": "[length(parameters('customDNSServers'))]"
+                  "notIn": "[length(parameters('dnsServers'))]"
                 },
                 {
                   "count": {
                     "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
                     "where": {
                       "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
-                      "in": "[parameters('customDNSServers')]"
+                      "in": "[parameters('dnsServers')]"
                     }
                   },
                   "notIn": "[length(field('Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]'))]"
