@@ -21,7 +21,7 @@
         ]
       },
           "dnsServers": {
-              "type": "Array",
+              "type": "String",
               "metadata": {
                   "displayName": "DNS Servers",
                   "description": "List of DNS servers to be applied"
