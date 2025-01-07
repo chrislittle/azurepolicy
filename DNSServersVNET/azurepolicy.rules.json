@@ -10,24 +10,40 @@
                 "in": "[parameters('listOfLocations')]"
             },
             {
-                "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
-                "notIn": "[parameters('dnsServers')]"
+              "anyOf": [
+                {
+                  "count": {
+                    "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]"
+                  },
+                  "notIn": "[length(parameters('customDNSServers'))]"
+                },
+                {
+                  "count": {
+                    "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
+                    "where": {
+                      "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
+                      "in": "[parameters('customDNSServers')]"
+                    }
+                  },
+                  "notIn": "[length(field('Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]'))]"
             }
-        ]
-        },
+            ]
+        }
+      ]
+    },
     "then": {
         "effect": "modify",
         "details": {
-            "roleDefinitionIds": [
-                "/providers/microsoft.authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7"
-            ],
-            "operations": [
-                {
-                "operation": "addOrReplace",            
-                "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
-                "value": "[parameters('dnsServers')]"
-                }
-            ]
-        }
-    }
-}
+              "roleDefinitionIds": [
+                  "/providers/microsoft.authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7"
+              ],
+              "operations": [
+                  {
+                      "operation": "addOrReplace",
+                      "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers",
+                      "value": "[parameters('dnsServers')]"
+                  }
+              ]
+          }
+      }
+  }

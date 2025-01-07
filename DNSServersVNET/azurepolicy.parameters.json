@@ -1,6 +1,6 @@
 {
     "listOfLocations": {
-            "type": "String",
+            "type": "Array",
             "metadata": {
               "description": "List of locations that require custom dns server configuration.",
               "displayName": "List of locations that require custom dns server configuration"
@@ -11,13 +11,14 @@
         ]
       },
           "dnsServers": {
-              "type": "String",
+              "type": "Array",
               "metadata": {
                   "displayName": "DNS Servers",
                   "description": "List of DNS servers to be applied"
               },
               "defaultValue": [
-                  "10.152.201.20"
+                  "10.152.201.20",
+                  "10.152.202.20"
               ]
           }
 }

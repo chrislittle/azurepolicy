@@ -10,7 +10,7 @@
       "version": "1.0.0",
       "parameters": {
           "listOfLocations": {
-            "type": "String",
+            "type": "Array",
             "metadata": {
               "description": "List of locations that require custom dns server configuration.",
               "displayName": "List of locations that require custom dns server configuration"
@@ -21,13 +21,14 @@
         ]
       },
           "dnsServers": {
-              "type": "String",
+              "type": "Array",
               "metadata": {
                   "displayName": "DNS Servers",
                   "description": "List of DNS servers to be applied"
               },
               "defaultValue": [
-                  "10.152.201.20"
+                  "10.152.201.20",
+                  "10.152.202.20"
               ]
           }
       },
@@ -43,11 +44,26 @@
                       "in": "[parameters('listOfLocations')]"
                   },
                   {
-                      "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
-                      "notIn": "[parameters('dnsServers')]"
+                    "anyOf": [
+                      {
+                        "count": {
+                          "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]"
+                        },
+                        "notIn": "[length(parameters('customDNSServers'))]"
+                      },
+                      {
+                        "count": {
+                          "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
+                          "where": {
+                            "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
+                            "in": "[parameters('customDNSServers')]"
+                          }
+                        },
+                        "notIn": "[length(field('Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]'))]"
                   }
                   ]
               }
+            ]
           },
           "then": {
               "effect": "modify",
@@ -58,7 +74,7 @@
                     "operations": [
                         {
                             "operation": "addOrReplace",
-                            "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
+                            "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers",
                             "value": "[parameters('dnsServers')]"
                         }
                     ]
@@ -66,3 +82,4 @@
             }
         }
     }
+}
