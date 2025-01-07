@@ -1,4 +1,6 @@
 # Update VNET Custom DNS Servers Based on Location
 
-## Try with Azure portal
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fchrislittle%2Fazurepolicy%2Frefs%2Fheads%2Fmain%2FAppendDNSServersVNET%2Fazurepolicy.json)
+## Create Policy Definition via Azure Powershell
+```
+$definition = New-AzPolicyDefinition -Name "Update VNET Custom DNS Servers Based on Location" -DisplayName "Update VNET Custom DNS Servers Based on Location" -description "Update virtual network custom DNS servers based on a defined list of locations" -Policy 'https://raw.githubusercontent.com/chrislittle/azurepolicy/refs/heads/main/AppendDNSServersVNET/azurepolicy.rules.json' -Parameter 'https://raw.githubusercontent.com/chrislittle/azurepolicy/refs/heads/main/AppendDNSServersVNET/azurepolicy.parameters.json' -Mode All
+```
