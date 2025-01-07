@@ -27,8 +27,7 @@
                   "description": "List of DNS servers to be applied"
               },
               "defaultValue": [
-                  "10.152.201.20",
-                  "10.152.201.21"
+                  "10.152.201.20"
               ]
           }
       },
@@ -51,19 +50,13 @@
               }
           },
           "then": {
-              "effect": "modify",
-              "details": {
-                "roleDefinitionIds": [
-                  "/providers/microsoft.authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7"
-                ],
-                "operations": [
-                  {
-                    "operation": "addOrReplace",
-                    "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers",
-                    "value": "[parameters('dnsServers')]"
-                  }
+              "effect": "append",
+              "details": [
+                {
+                  "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers",
+                  "value": "[parameters('dnsServers')]"
+                }
               ]
             }
         }
       }
-    }

@@ -17,8 +17,7 @@
                   "description": "List of DNS servers to be applied"
               },
               "defaultValue": [
-                  "10.152.201.20",
-                  "10.152.201.21"
+                  "10.152.201.20"
               ]
           }
 }
