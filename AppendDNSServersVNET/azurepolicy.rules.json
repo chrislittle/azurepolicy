@@ -7,18 +7,14 @@
           },
           {
               "field": "location",
-              "notIn": "[parameters('listOfDNSProvidedLocations')]"
+              "equals": "[parameters('listOfLocations')]"
           },
           {
-            "anyOf": [
-              {
-                "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers",
-                "exists": false
-              }
-          ]
-      }
-  ]
-  },
+              "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers",
+              "notEquals": "[parameters('dnsServers')]"
+          }
+        ]
+      },
   "then": {
       "effect": "modify",
       "details": {
@@ -33,5 +29,5 @@
               }
           ]
       }
-  }
+    }
 }

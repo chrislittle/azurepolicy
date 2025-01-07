@@ -9,20 +9,13 @@
       },
       "version": "1.0.0",
       "parameters": {
-          "listOfDNSProvidedLocations": {
-              "type": "Array",
-              "metadata": {
-                  "displayName": "List of Locations",
-                  "description": "Locations that should use the specified DNS servers"
-              },
-              "defaultValue": [
-                  "eastus",
-                  "eastus2",
-                  "centralindia",
-                  "southcentralus",
-                  "westus2"
-              ]
-          },
+          "listOfLocations": {
+          "type": "Array",
+          "metadata": {
+            "description": "list of locations that require custom dns server configuration.",
+            "strongType": "location",
+            "displayName": "list of locations that require custom dns server configuration"
+        },
           "dnsServers": {
               "type": "Array",
               "metadata": {
@@ -43,17 +36,14 @@
                   },
                   {
                       "field": "location",
-                      "notIn": "[parameters('listOfDNSProvidedLocations')]"
+                      "equals": "[parameters('listOfLocations')]"
                   },
                   {
-                    "anyOf": [
-                      {
-                        "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers",
-                        "exists": false
-                      }
+                      "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers",
+                      "notEquals": "[parameters('dnsServers')]"
+                  }
                   ]
               }
-          ]
           },
           "then": {
               "effect": "modify",
