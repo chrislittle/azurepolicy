@@ -10,7 +10,7 @@
       "version": "1.0.0",
       "parameters": {
           "listOfLocations": {
-            "type": "Array",
+            "type": "String",
             "metadata": {
               "description": "List of locations that require custom dns server configuration.",
               "displayName": "List of locations that require custom dns server configuration"
