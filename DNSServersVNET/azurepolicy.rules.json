@@ -40,7 +40,7 @@
               "operations": [
                   {
                       "operation": "addOrReplace",
-                      "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers",
+                      "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
                       "value": "[parameters('dnsServers')]"
                   }
               ]
