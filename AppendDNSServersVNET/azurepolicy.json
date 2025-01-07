@@ -10,12 +10,16 @@
       "version": "1.0.0",
       "parameters": {
           "listOfLocations": {
-          "type": "Array",
-          "metadata": {
-            "description": "List of locations that require custom dns server configuration.",
-            "strongType": "location",
-            "displayName": "List of locations that require custom dns server configuration"
+            "type": "Array",
+            "metadata": {
+              "description": "List of locations that require custom dns server configuration.",
+              "displayName": "List of locations that require custom dns server configuration"
         },
+        "defaultValue": [
+          "westus",
+          "eastus2"
+        ]
+      },
           "dnsServers": {
               "type": "Array",
               "metadata": {
@@ -61,5 +65,4 @@
               }
           }
       }
-  }
-}
+    }
