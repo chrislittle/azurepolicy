@@ -16,7 +16,6 @@
           "description": "Policy effect to apply when the policy rule is evaluated to true."
       },
       "allowedValues": [
-          "append",
           "modify"
       ],
       "defaultValue": "modify"
