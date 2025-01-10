@@ -16,9 +16,9 @@
           "description": "Policy effect to apply when the policy rule is evaluated to true."
       },
       "allowedValues": [
-          "modify"
+          "append"
       ],
-      "defaultValue": "modify"
+      "defaultValue": "append"
   },
   "listOfLocations": {
       "type": "Array",
