@@ -1,0 +1,32 @@
+{
+  "servers": {
+      "type": "Array",
+      "metadata": {
+          "description": "The list of DNS servers to enforce.",
+          "displayName": "DNS Servers list"
+      },
+      "defaultValue": [
+          "10.152.201.20"
+      ]
+  },
+  "effect": {
+      "type": "String",
+      "metadata": {
+          "displayName": "Effect",
+          "description": "Policy effect to apply when the policy rule is evaluated to true."
+      },
+      "allowedValues": [
+          "append",
+          "modify"
+      ],
+      "defaultValue": "modify"
+  },
+  "listOfLocations": {
+      "type": "Array",
+      "metadata": {
+          "description": "The list of locations to enforce DNS configuration.",
+          "strongType": "location",
+          "displayName": "The list of locations to enforce DNS configuration."
+      }
+  }
+}

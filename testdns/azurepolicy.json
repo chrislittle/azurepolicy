@@ -1,0 +1,88 @@
+{
+    "displayName": "Enforce VNET DNS servers",
+    "description": "This policy enforces the use of a specific DNS Servers on Virtual Networks based on location.",
+    "metadata": {
+        "category": "Network",
+        "version": "1.0.0"
+    },
+    "mode": "Indexed",
+    "parameters": {
+        "servers": {
+            "type": "Array",
+            "metadata": {
+                "description": "The list of DNS servers to enforce.",
+                "displayName": "DNS Servers list"
+            },
+            "defaultValue": [
+                "10.152.201.20"
+            ]
+        },
+        "effect": {
+            "type": "String",
+            "metadata": {
+                "displayName": "Effect",
+                "description": "Policy effect to apply when the policy rule is evaluated to true."
+            },
+            "allowedValues": [
+                "append",
+                "modify"
+            ],
+            "defaultValue": "modify"
+        },
+        "listOfLocations": {
+            "type": "Array",
+            "metadata": {
+                "description": "The list of locations to enforce DNS configuration.",
+                "strongType": "location",
+                "displayName": "The list of locations to enforce DNS configuration."
+            }
+        }
+    },
+    "policyRule": {
+        "if": {
+            "AllOf": [
+                {
+                    "equals": "Microsoft.Network/virtualNetworks",
+                    "field": "type"
+                },
+                {
+                    "field": "location",
+                    "in": "[parameters('listOfLocations')]"
+                },
+                {
+                    "anyOf": [
+                        {
+                            "exists": false,
+                            "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]"
+                        },
+                        {
+                            "count": {
+                                "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
+                                "where": {
+                                    "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
+                                    "notIn": "[parameters('servers')]"
+                                }
+                            },
+                            "greater": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        "then": {
+            "effect": "[parameters('effect')]",
+            "details": {
+                    "roleDefinitionIds": [
+                        "/providers/microsoft.authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7"
+                    ],
+                    "operations": [
+                        {
+                            "operation": "addOrReplace",
+                            "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
+                            "value": "[parameters('servers')]"
+                        }
+                    ]
+                }
+            }
+        }
+    }
