@@ -8,7 +8,7 @@
     "mode": "Indexed",
     "parameters": {
         "servers": {
-            "type": "Array",
+            "type": "String",
             "metadata": {
                 "description": "The list of DNS servers to enforce.",
                 "displayName": "DNS Servers list"
@@ -24,9 +24,9 @@
                 "description": "Policy effect to apply when the policy rule is evaluated to true."
             },
             "allowedValues": [
-                "append"
+                "modify"
             ],
-            "defaultValue": "append"
+            "defaultValue": "modify"
         },
         "listOfLocations": {
             "type": "Array",
@@ -69,15 +69,18 @@
             ]
         },
         "then": {
-            "effect": "[parameters('effect')]",
-            "details": [
+            "roleDefinitionIds": [
+                "/providers/microsoft.authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7"
+            ],
+            "operations": [
                 {
-                "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
-                "value": "[parameters('servers')]"
+                    "operation": "addOrReplace",
+                    "field": "Microsoft.Network/virtualNetworks/dhcpOptions.dnsServers[*]",
+                    "value": "[parameters('servers')]"
                 }
             ]
-            }
         }
     }
+}
 
     

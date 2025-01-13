@@ -1,6 +1,6 @@
 {
   "servers": {
-      "type": "Array",
+      "type": "String",
       "metadata": {
           "description": "The list of DNS servers to enforce.",
           "displayName": "DNS Servers list"
@@ -16,9 +16,9 @@
           "description": "Policy effect to apply when the policy rule is evaluated to true."
       },
       "allowedValues": [
-          "append"
+          "modify"
       ],
-      "defaultValue": "append"
+      "defaultValue": "modify"
   },
   "listOfLocations": {
       "type": "Array",
