@@ -1,5 +1,5 @@
 # Update VNET Custom DNS Servers Based on Location
-
+NOTE: This policy is built with just a single DNS server in a String.  Additional parameters (Strings) would need to be added if there are more than 1 DNS server to configure. This process would also include the need to perform multiple operations with Append for subsequent IPs.
 
 ## Try with Azure portal
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fchrislittle%2Fazurepolicy%2Frefs%2Fheads%2Fmain%2Ftestdns%2Fazurepolicy.json)
