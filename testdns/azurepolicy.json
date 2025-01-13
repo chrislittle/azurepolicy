@@ -12,10 +12,7 @@
             "metadata": {
                 "description": "The list of DNS servers to enforce.",
                 "displayName": "DNS Servers list"
-            },
-            "defaultValue": [
-                "10.152.201.20"
-            ]
+            }
         },
         "effect": {
             "type": "String",
