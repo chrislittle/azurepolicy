@@ -1,0 +1,51 @@
+{
+  "properties": {
+    "displayName": "Managed disks should disable public and private network access",
+    "policyType": "Custom",
+    "mode": "Indexed",
+    "description": "Disabling public and private network access improves security by ensuring that a managed disk isn't exposed on the public internet or accessible from other customer networks",
+    "metadata": {
+      "version": "1.0",
+      "category": "Compute"
+    },
+    "version": "1.0",
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "defaultValue": "Deny",
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "metadata": {
+          "displayName": "Effect",
+          "description": "The effect determines what happens when the policy rule is evaluated to match"
+        }
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/disks"
+          },
+          {
+            "field": "Microsoft.Compute/disks/networkAccessPolicy",
+            "notIn": [
+              "DenyAll"
+            ]
+          },
+          {
+            "field": "Microsoft.Compute/disks/publicNetworkAccess",
+            "notEquals": "Disabled"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Compute/disks"
+      },
+      {
+        "field": "Microsoft.Compute/disks/networkAccessPolicy",
+        "notIn": [
+          "DenyAll"
+        ]
+      },
+      {
+        "field": "Microsoft.Compute/disks/publicNetworkAccess",
+        "notEquals": "Disabled"
+      }
+    ]
+  },
+  "then": {
+    "effect": "[parameters('effect')]"
+  }
+}
