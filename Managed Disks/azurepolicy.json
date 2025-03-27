@@ -33,9 +33,7 @@
           },
           {
             "field": "Microsoft.Compute/disks/networkAccessPolicy",
-            "notIn": [
-              "DenyAll"
-            ]
+            "notEquals": "DenyAll"
           },
           {
             "field": "Microsoft.Compute/disks/publicNetworkAccess",
