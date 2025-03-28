@@ -10,21 +10,5 @@
       "Disabled"
     ],
     "defaultValue": "Modify"
-  },
-  "location": {
-    "type": "String",
-    "metadata": {
-      "displayName": "Location",
-      "strongType": "location",
-      "description": "All disks in this region are validated and disk access resource would be associated with them."
-    }
-  },
-  "diskAccessId": {
-    "type": "String",
-    "metadata": {
-      "displayName": "Resource Id for the DiskAccess in the given location to which the disk resource needs to be linked",
-      "strongType": "Microsoft.Compute/diskAccesses",
-      "description": "Disk access resources enable exporting managed disks securely via private endpoints. Learn more at: https://aka.ms/disksprivatelinksdoc"
-    }
   }
 }

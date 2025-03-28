@@ -6,10 +6,6 @@
         "equals": "Microsoft.Compute/disks"
       },
       {
-        "field": "location",
-        "equals": "[parameters('location')]"
-      },
-      {
         "field": "Microsoft.Compute/disks/networkAccessPolicy",
         "notIn": [
           "AllowPrivate",
@@ -30,11 +26,6 @@
       ],
       "conflictEffect": "audit",
       "operations": [
-        {
-          "operation": "addOrReplace",
-          "field": "Microsoft.Compute/disks/diskAccessId",
-          "value": "[parameters('diskAccessId')]"
-        },
         {
           "operation": "addOrReplace",
           "field": "Microsoft.Compute/disks/networkAccessPolicy",
