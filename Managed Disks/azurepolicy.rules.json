@@ -7,7 +7,10 @@
       },
       {
         "field": "Microsoft.Compute/disks/networkAccessPolicy",
-        "notEquals": "DenyAll"
+        "In": [
+              "AllowPrivate",
+              "AllowAll"
+            ]
       },
       {
         "field": "Microsoft.Compute/disks/publicNetworkAccess",
